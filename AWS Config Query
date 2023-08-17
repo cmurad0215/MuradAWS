@@ -1,0 +1,18 @@
+AWS Config Query to include Platform type:
+Also, please run the query to be executed with all OUs
+
+
+
+SELECT
+  accountId,
+  resourceId,
+  configuration.privateIpAddress,
+  configuration.publicIpAddress,
+  configuration.instanceType,
+  availabilityZone,
+  configuration.state.name,
+  configuration.platform,
+  tags
+WHERE
+  resourceType = 'AWS::EC2::Instance'
+  OR configuration.state.name = '*'
